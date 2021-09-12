@@ -1,0 +1,60 @@
+{
+    "openapi":"3.0.0",
+    "info":{
+        "version":"1.0.0",
+        "title":"PAPB API",
+        "description":"API aplikasi kasir",
+        "license":{
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host":"localhost:3000",
+    "basePath":"/",
+    "tags":[
+        {
+            "name":"Barang",
+            "description":"API for barang system"
+        }
+    ],
+    "schemes":["http"],
+    "consumes":["application/json"],
+    "produces":["application/json"],
+    "paths":{
+        "/barang":{
+            "get":{
+                "tags":["Barang"],
+                "summary":"Get all barang",
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/Barangs"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions":{
+        "Barang":{
+            "required": ["namaBarang", "id", "hargaBarang"]
+        },
+        "properties":{
+            "id":{
+                "type":"integer",
+                "uniqueItems":true
+            },
+            "namaBarang":{
+                "type":"string"
+            },
+            "hargaBarang":{
+                "type":"integer"
+            }
+        },
+        "Barangs":{
+            "type":"array",
+            "$ref":"#/definitions/Barang"
+        }
+    }
+}
