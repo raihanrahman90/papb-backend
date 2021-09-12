@@ -1,5 +1,5 @@
 {
-    "openapi":"3.0.0",
+    "swagger":"2.0.0",
     "info":{
         "version":"1.0.0",
         "title":"PAPB API",
@@ -33,25 +33,104 @@
                         }
                     }
                 }
+            },
+            "post":{
+                "tags":["Barang"],
+                "description":"Create new Barang in system",
+                "parameters":[
+                    {
+                        "name":"barang",
+                        "in":"body",
+                        "description":"Barang that we want to create",
+                        "schema":{"$ref":"#/definitions/Barang"}
+                    }
+                ],
+                "produces":["application/json"],
+                "responses":{
+                    "200":{
+                        "description":"New Barang is created",
+                        "schema":{
+                            "$ref":"#/definitions/Barang"
+                        }
+                    }
+                }
+            }
+        },
+        "/barang/{id}":{
+            "parameters":[
+                {
+                    "name":"id",
+                    "in":"path",
+                    "required":true,
+                    "description":"ID of barang that we want to modify",
+                    "type":"integer"
+                }
+            ],
+            "get":{
+                "summary":"Get one barang that we want to get",
+                "tags":["Barang"],
+                "responses":{
+                    "200":{
+                        "description":"Barang is successfully got",
+                        "schema":{
+                            "$ref":"#/definitions/Barang"
+                        }
+                    }
+                }
+            },
+            "post":{
+                "summary":"Update one barang",
+                "tags":["Barang"],
+                "parameters":[
+                    {
+                        "name":"barang",
+                        "in":"body",
+                        "description":"Barang that we want to create",
+                        "schema":{
+                            "properties":{
+                                "namaBarang":{"type":"string"},
+                                "hargaBarang":{"type":"integer"}
+                            }
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"Barang is successfully updated",
+                        "schema":{
+                            "$ref":"#/definitions/Barang"
+                        }
+                    }
+                }
+            },
+            "delete":{
+                "summary":"Delete a barang with id",
+                "tags":["Barang"],
+                "responses":{
+                    "200":{
+                        "description":"Barang id deleted"
+                    }
+                }
             }
         }
     },
     "definitions":{
         "Barang":{
-            "required": ["namaBarang", "id", "hargaBarang"]
-        },
-        "properties":{
-            "id":{
-                "type":"integer",
-                "uniqueItems":true
-            },
-            "namaBarang":{
-                "type":"string"
-            },
-            "hargaBarang":{
-                "type":"integer"
+            "required": ["namaBarang", "id", "hargaBarang"],
+            "properties":{
+                "id":{
+                    "type":"integer",
+                    "uniqueItems":true
+                },
+                "namaBarang":{
+                    "type":"string"
+                },
+                "hargaBarang":{
+                    "type":"integer"
+                }
             }
         },
+        
         "Barangs":{
             "type":"array",
             "$ref":"#/definitions/Barang"
