@@ -112,6 +112,54 @@
                     }
                 }
             }
+        },
+        "/transaksi":{
+            "get":{
+                "tags":["Transaksi"],
+                "description":"Get all transkasi from system",
+                "responses":{
+                    "200":{
+                        "description":"successfully get all transaksi",
+                        "schema":{
+                            "$ref":"#/definitions/Transaksi"
+                        }
+                    }
+                }
+            },
+            "post":{
+                "tags":["Transaksi"],
+                "description":"Create new Transaksi in system",
+                "parameters":[
+                    {
+                        "name":"transaksi",
+                        "in":"body",
+                        "description":"Transaksi that we want to create",
+                        "schema":{"$ref":"#/definitions/Transaksi"}
+                    }
+                ],
+                "produces":["application/json"],
+                "responses":{
+                    "200":{
+                        "description":"New Barang is created",
+                        "schema":{
+                            "$ref":"#/definitions/Barang"
+                        }
+                    }
+                }
+            }
+        },
+        "/transaksi/{id}":{
+            "tags":["Transaksi"],
+            "parameters":[
+                {
+                    "name":"id",
+                    "in":"path",
+                    "type":"integer"
+                }
+            ],
+            "get":{
+                "tags":["Transaksi"]
+            }
         }
     },
     "definitions":{
@@ -130,10 +178,33 @@
                 }
             }
         },
-        
         "Barangs":{
             "type":"array",
             "$ref":"#/definitions/Barang"
+        },
+        "TransaksiBarang":{
+            "required": ["jumlah", "transaksiBarangId"],
+            "properties":{
+                "jumlah":{
+                    "type":"integer",
+                    "example":3
+                },
+                "transaksiBarangId":{
+                    "type":"integer",
+                    "example":3
+                }
+            }
+        },
+        "Transaksi":{
+            "required":["transaksi_barang"],
+            "properties":{
+                "transaksi_barang":{
+                    "type":"array",
+                    "items":{
+                        "$ref":"#/definitions/TransaksiBarang"
+                    }
+                }
+            }
         }
     }
 }
