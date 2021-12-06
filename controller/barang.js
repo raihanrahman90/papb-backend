@@ -18,9 +18,8 @@ exports.create = (req, res)=>{
         updatedAt:date
     }).then(data=>{
         res.status(200).json({
-            responseCode:200,
-            responseMessage:"OK",
-            responseData:data
+            success:true,
+            message:""
         })
     }).catch(err=>{
         res.status(500).json({
@@ -46,12 +45,14 @@ exports.update = (req,res)=>{
     barang.update(req.body, 
         {where:{id:req.params.id}
     }).then(data=>{
-        res.status(200).json(data)
+        res.status(200).json({
+            success:true,
+            message:""
+        })
     }).catch(err=>{
         res.status(500).json({
-            responseCode:500,
-            responseMessage:"Error",
-            responseData:err
+            success:false,
+            message:"Terjadi kesalahan"
         })
     })
 }
@@ -61,15 +62,13 @@ exports.delete = (req,res)=>{
         where:{id:req.params.id}
     }).then(data=>{
         res.status(200).json({
-            responseCode:200,
-            responseMessage:"OK",
-            responsesData:data
+            success:true,
+            message:""
         })
     }).catch(err=>{
         res.status(500).json({
-            responseCode:500,
-            responseMessage:"Error",
-            responseData:err
+            success:false,
+            message:"Terjadi kesalahan"
         })
     })
 }

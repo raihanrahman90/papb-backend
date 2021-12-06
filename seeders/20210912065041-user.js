@@ -42,11 +42,11 @@ module.exports = {
     const transaksiRows = transaksi[0];
     await queryInterface.bulkInsert(
       'transaksi_barangs',[
-        {jumlah:3, transaksiBarangId:barangRows[0].id,transaksiWaktuId:transaksiRows[0].id,createdAt:new Date(), updatedAt: new Date()},
-        {jumlah:2, transaksiBarangId:barangRows[1].id,transaksiWaktuId:transaksiRows[0].id,createdAt:new Date(), updatedAt: new Date()},
-        {jumlah:2, transaksiBarangId:barangRows[2].id,transaksiWaktuId:transaksiRows[0].id,createdAt:new Date(), updatedAt: new Date()},
-        {jumlah:1, transaksiBarangId:barangRows[0].id,transaksiWaktuId:transaksiRows[1].id,createdAt:new Date(), updatedAt: new Date()},
-        {jumlah:1, transaksiBarangId:barangRows[0].id,transaksiWaktuId:transaksiRows[2].id,createdAt:new Date(), updatedAt: new Date()},
+        {jumlah:3, transaksiDetailId:barangRows[0].id,transaksiWaktuId:transaksiRows[0].id,createdAt:new Date(), updatedAt: new Date()},
+        {jumlah:2, transaksiDetailId:barangRows[1].id,transaksiWaktuId:transaksiRows[0].id,createdAt:new Date(), updatedAt: new Date()},
+        {jumlah:2, transaksiDetailId:barangRows[2].id,transaksiWaktuId:transaksiRows[0].id,createdAt:new Date(), updatedAt: new Date()},
+        {jumlah:1, transaksiDetailId:barangRows[0].id,transaksiWaktuId:transaksiRows[1].id,createdAt:new Date(), updatedAt: new Date()},
+        {jumlah:1, transaksiDetailId:barangRows[0].id,transaksiWaktuId:transaksiRows[2].id,createdAt:new Date(), updatedAt: new Date()},
       ]
     )
   },

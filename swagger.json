@@ -154,11 +154,21 @@
                 {
                     "name":"id",
                     "in":"path",
+                    "required":true,
                     "type":"integer"
                 }
             ],
             "get":{
-                "tags":["Transaksi"]
+                "summary":"Get all detail of transaksi",
+                "tags":["Transaksi"],
+                "responses":{
+                    "200":{
+                        "description":"Transaksi successfully got",
+                        "schema":{
+                            "$ref":"#/definitions/Transaksi"
+                        }
+                    }
+                }
             }
         }
     },

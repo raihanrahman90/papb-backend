@@ -5,5 +5,6 @@
 # 3. sequelize db:create
 # 4. sequelize db:migrate
 # 5. npm run create:db
-# 6. npm run start:debug
-# 7. buka browser localhost:3000/api-docs
+# 6. npx sequelize-cli db:seed:all
+# 7. npm run start:debug
+# 8. buka browser localhost:3000/api-docs
